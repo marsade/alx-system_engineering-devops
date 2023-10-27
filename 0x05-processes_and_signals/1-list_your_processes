@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script shows all processes on the system in user oriented format
+ps -u -a
