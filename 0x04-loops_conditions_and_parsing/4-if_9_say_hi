@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# This script prints Best school and Hi on the 9th iteration
 i=0
 while [[ $i -lt 10 ]]; do
 	if [ $i -eq 9 ];
