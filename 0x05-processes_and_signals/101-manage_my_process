@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# This is the init script for manage my process
+PID=""
+if [ "$#" -lt 1 ] || [ $# -gt 1 ]; then
+echo "Usage: manage_my_process {start|stop|restart}"
+exit 1
+elif [ "$1" != "start" ] && [ "$1" != "stop" ] && [ "$1" != "restart" ]; then
+echo "Usage: manage_my_process {start|stop|restart}"
+exit 1
+fi
+if [ "$1" = "start" ]; then
+./manage_my_process > /dev/null 2>&1 &
+PID=$(pgrep -f "101-manage_my_process")
+touch /var/run/my_process.pid && echo "$PID" > /var/run/my_process.pid
+echo "manage_my_process started"
+elif [ "$1" = "stop" ]; then
+pkill -f manage_my_process
+rm -f /var/run/my_process.pid
+echo "manage_my_process stopped"
+elif [ "$1" = "restart" ]; then
+pkill -f manage_my_process
+rm -f /var/run/my_process.pid
+./manage_my_process > /dev/null 2>&1 &
+PID=$(pgrep -f "101-manage_my_process")
+touch /var/run/my_process.pid && echo "$PID" > /var/run/my_process.pid
+echo "manage_my_process restarted"
+fi
