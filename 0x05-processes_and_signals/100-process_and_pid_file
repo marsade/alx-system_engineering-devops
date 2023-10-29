@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Creates a script and runs infinitely
+onsigterm() {
+	sigterm_handle = true
+	echo "I hate the kill command"
+	rm -r /var/run/myscript.pid
+	exit 1
+}
+onsigquit() {
+	sigquit_handle = true
+	rm -r /var/run/myscript.pid
+	exit 1
+}
+sigterm_handle = false
+sigquit_handle = false
+touch /var/run/myscript.pid	 #create the pid file
+PID=$(pgrep -f "100-process_and_pid_file")	#get the pid of this process
+echo "$PID" > /var/run/myscript.pid	#append to file
+while true; do
+	echo "To infinity and beyond"
+	trap 'onsigterm' SIGTERM
+	trap 'onsigquit' SIGQUIT
+	trap 'echo "Y U no love me?!"' SIGINT
+done
