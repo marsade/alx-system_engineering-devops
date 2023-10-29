@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script prints 'I am alive' indefinitely
+while true; do
+	cd /tmp/ && touch my_process && echo "I am alive" >> my_process
+	echo "I am alive!"
+done
+
+
