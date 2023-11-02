@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script changes the ip of localhost and facebook.com
+
+localhst_ip="127.0.0.2"
+facebookhst_ip="8.8.8.8"
+hosts_file="/etc/hosts"
+
+echo "$localhst_ip	localhost" > $hosts_file
+echo "$facebookhst_ip	facebook.com" >> $hosts_file
