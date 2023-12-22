@@ -1,3 +1,4 @@
+#!/usr/bin/pup
 # Ensure flask is installed from pip3
 
 package { 'flask':
