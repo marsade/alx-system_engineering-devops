@@ -1,0 +1,26 @@
+Screenshot of whiteboard
+- https://imgur.com/a/3heHbbw
+
+What is a server?
+- A server is a computer that provides sata or services to other computers via a network
+
+What is the role of the domain name?
+- The domain name allows for easy access of the website cause a text-based label is easier to recogize than an ip address
+
+What type of DNS record www is in www.foobar.com?
+- CNAME record
+
+What is the role of the web server?
+- The web server in this infrastructure hosts and manages the website
+
+What is the role of the application server?
+- The application server connects the systems, services and databases
+
+What is the role of the database?
+- a database manages user information so it can be easily accessed, managed and updated
+
+What is the server using to communicate with the computer of the user requesting the website?
+- The server communicates with  the website via a router
+
+Issues with this infrastructure
+- Since there is no load balancer, a single point of failure can occur. Also, the system is not scalable since we can't increase or decrease the number of servers without bringing down the whole application.
