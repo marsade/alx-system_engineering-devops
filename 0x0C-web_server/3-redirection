@@ -1,24 +1,16 @@
 #!/usr/bin/env bash
-# Set up web-01 server
+#  A Script that configures a new Ubuntu machine to Perform a 301-redirection
 
+# Upadating Packages before Installations
 sudo apt-get update
 sudo apt-get install -y nginx
 
-sudo tee /etc/nginx/sites-available/default > /dev/null <<EOL
-server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+# Creating an index.html page
+echo "tch!" | sudo tee /var/www/html/index.html
 
-	root /var/www/html;
-	index index.html index.htm index.nginx-debian.html;
+# Performing a 301 Redirection
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/marsade permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-	server_name _;
-
-		location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}
-
-}
-EOL
-sudo nginx -s reload
-sudo service nginx start
+# Restarting Nginx service
+sudo service nginx restart
