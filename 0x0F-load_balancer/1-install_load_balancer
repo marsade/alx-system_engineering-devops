@@ -2,17 +2,17 @@
 # Create a script to install and configure HAProxy on lb-01 server
 
 sudo apt-get -y update
-apt-get -y install haproxy
+sudo apt-get -y install haproxy
 
 server_config=\
 "
 frontend  mars_frontend
         bind *:80
         mode http
-        default_backend mars_frontend
+        default_backend mars_backend
 backend mars_backend
         balance roundrobin
-        server 390839-web-01 54.209.112.112 check
+        server 390839-web-01 54.209.112.112:80 check
         server 390839-web-02 52.87.154.222:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
