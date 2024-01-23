@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if [ $# -ne 1 ]
+then
+	echo "Usage: ./5-mysql_backup PASSWORD"
+else
+	mqsqldump -uroot -p"$1" --all-databases > backup.sql
+	timestamp=$(date +"%d-%m-%Y")
+	tar -czf "$timestamp.tar.gz" "backup.sql"
+fi
