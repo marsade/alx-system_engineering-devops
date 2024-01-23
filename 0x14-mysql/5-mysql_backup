@@ -3,7 +3,8 @@ if [ $# -ne 1 ]
 then
 	echo "Usage: ./5-mysql_backup PASSWORD"
 else
-	mqsqldump -uroot -p"$1" --all-databases > backup.sql
+	file_name="backup.sql"
+	mysqldump -uroot -p"$1" --all-databases > "$file_name"
 	timestamp=$(date +"%d-%m-%Y")
-	tar -czf "$timestamp.tar.gz" "backup.sql"
+	tar -czf "$timestamp.tar.gz" "$file_name"
 fi
