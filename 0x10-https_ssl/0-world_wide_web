@@ -7,7 +7,7 @@ dig_me () {
 		subd="$2"
 		dom="$1"
 		fulld="$2.$1"
-		dig "$subd.$dom" | awk -v sub_d="$subd" -v fulld="$fulld" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5}'
+		dig "$subd.$dom" | awk -v sub_d="$subd" -v fulld="$fulld" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record and points to " $5}'
 	elif [ $# -eq 1 ]
 	then
 		dom="$1"
@@ -15,10 +15,10 @@ dig_me () {
 		sub2="web-01"
 		sub3="web-02"
 		sub4="lb-01"
-		dig "$sub1.$dom" | awk -v sub_d="$sub1" -v fulld="$sub1.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
-		dig "$sub2.$dom" | awk -v sub_d="$sub2" -v fulld="$sub2.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
-		dig "$sub3.$dom" | awk -v sub_d="$sub3" -v fulld="$sub3.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
-		dig "$sub4.$dom" | awk -v sub_d="$sub4" -v fulld="$sub4.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
+		dig "$sub1.$dom" | awk -v sub_d="$sub1" -v fulld="$sub1.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record and points to " $5 }'
+		dig "$sub2.$dom" | awk -v sub_d="$sub2" -v fulld="$sub2.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record and points to " $5 }'
+		dig "$sub3.$dom" | awk -v sub_d="$sub3" -v fulld="$sub3.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record and points to " $5 }'
+		dig "$sub4.$dom" | awk -v sub_d="$sub4" -v fulld="$sub4.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record and points to " $5 }'
 
 	fi
 }
