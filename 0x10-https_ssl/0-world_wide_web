@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# This script displays information about subdomains
+
+dig_me () {
+	if [ $# -eq 2 ]
+	then
+		subd="$2"
+		dom="$1"
+		fulld="$2.$1"
+		dig "$subd.$dom" | awk -v sub_d="$subd" -v fulld="$fulld" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5}'
+	elif [ $# -eq 1 ]
+	then
+		dom="$1"
+		sub1="www"
+		sub2="web-01"
+		sub3="web-02"
+		sub4="lb-01"
+		dig "$sub1.$dom" | awk -v sub_d="$sub1" -v fulld="$sub1.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
+		dig "$sub2.$dom" | awk -v sub_d="$sub2" -v fulld="$sub2.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
+		dig "$sub3.$dom" | awk -v sub_d="$sub3" -v fulld="$sub3.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
+		dig "$sub4.$dom" | awk -v sub_d="$sub4" -v fulld="$sub4.$dom" '$1 ~ "^" fulld { print "The subdomain " sub_d " is a A record " $5 }'
+
+	fi
+}
+if [ $# -eq 1 ] ; then
+	dig_me "$1"
+elif [ $# -eq 2 ] ; then
+	dig_me "$1" "$2"
+fi
