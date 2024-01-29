@@ -11,15 +11,14 @@ import sys
 def employee_todo(emp_id):
     try:
         # Urls
-        base_url = "https://jsonplaceholder.typicode.com"
-        user_url = f"{base_url}/users/{emp_id}"
-        todo_url = 'https://jsonplaceholder.typicode.com/users/{}/ \
-        todos'.format(emp_id)
+        base_url = 'https://jsonplaceholder.typicode.com'
+        user_url = f'{base_url}/users/{emp_id}'
+        todo_url = f'https://jsonplaceholder.typicode.com/users/{emp_id}/todos'
 
         # Request and process data
         user_response = requests.get(user_url)
         user_data = user_response.json()
-        emp_usrname = user_data.get("username")
+        emp_usrname = user_data.get('username')
         todo_response = requests.get(todo_url)
         todo_data = todo_response.json()
 
@@ -36,7 +35,7 @@ def employee_todo(emp_id):
             )
         updateUser[emp_id] = total_tasks
 
-        file_Json = emp_id + ".json"
+        file_Json = emp_id + '.json'
         with open(file_Json, 'w') as f:
             json.dump(updateUser, f)
 
