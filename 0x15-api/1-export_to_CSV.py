@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Uses the API to return information about an employee and exports it in csv format """
+"""
+    Uses the API to return information about an employee 
+    and exports it in csv format
+"""
 import csv
 import requests
 import sys
