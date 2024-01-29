@@ -28,7 +28,7 @@ def employee_todo(emp_id):
         for data in todo_data:
             total_tasks.append(
                 {
-                    'tasks': data.get('title'),
+                    'task': data.get('title'),
                     "completed": data.get('completed'),
                     "username": emp_usrname,
                 }
