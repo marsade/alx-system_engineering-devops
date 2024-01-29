@@ -24,7 +24,7 @@ def employee_todo(emp_id):
         total_number_of_tasks = len(todo_data)
 
         # Print tasks
-        print("Employee {} is done with tasks ({}/{}):".format(
+        print("Employee {} is done with tasks({}/{}):".format(
             employee_name, number_of_done_tasks, total_number_of_tasks))
         for task in completed_tasks:
             print("\t {}".format(task.get('title')))
