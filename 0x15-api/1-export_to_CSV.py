@@ -4,6 +4,7 @@ import csv
 import requests
 import sys
 
+
 def employee_todo(emp_id):
     try:
         # Urls
@@ -27,7 +28,8 @@ def employee_todo(emp_id):
             csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
             # Write data rows
             for task in todo_data:
-                csv_writer.writerow([employee_id, employee_name, str(task["completed"]), task["title"]])
+                csv_writer.writerow([employee_id, employee_name, str(
+                    task["completed"]), task["title"]])
 
     except requests.RequestException as e:
         print(f"Error fetching data: {e}")
