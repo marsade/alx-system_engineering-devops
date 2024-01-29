@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Uses the API to return information about an employee 
+    Uses the API to return information about an employee
     and exports it in csv format
 """
 import csv
@@ -18,7 +18,7 @@ def employee_todo(emp_id):
         # Request and process data
         user_response = requests.get(user_url)
         user_data = user_response.json()
-        employee_name = user_data.get("name")
+        emp_usr = user_data.get("username")
         todo_response = requests.get(todo_url)
         todo_data = todo_response.json()
 
@@ -31,7 +31,7 @@ def employee_todo(emp_id):
             csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
             # Write data rows
             for task in todo_data:
-                csv_writer.writerow([employee_id, employee_name, str(
+                csv_writer.writerow([employee_id, emp_usr, str(
                     task["completed"]), task["title"]])
 
     except requests.RequestException as e:
