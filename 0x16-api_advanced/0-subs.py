@@ -7,11 +7,15 @@ import requests
 
 
 def number_of_subscribers(subreddit):
+    """Returns the number of subscribers for a fiven subreddit
+    
+    Return:
+        subscriber count or 0 if no subscribers"""
     headers = {'User-Agent': 'RedditSubs'}
     subreddit = subreddit
     url = 'https://www.reddit.com/r'
     full_url = '{}/{}/about.json'.format(url, subreddit)
-    response = requests.get(full_url)
+    response = requests.get(full_url,headers=headers)
 
     if response.status_code == 200:
         data = response.json()
